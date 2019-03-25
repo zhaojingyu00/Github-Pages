@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="" placeholder="请输入想查找的商品" id="text" style="border:solid 1px orange;width: 252px;height: 32px;"/>
+    <input type="button" id="serch" value="搜索" style="height: 29px;width: 111px;">   
+    <p>最近搜索</p>
+    <div class="save" style="width:400px;height:23px;"></div>
+    <button id="input" style=" margin-left: 420px;margin-top:20px;color: white;border: 0px;float:left;">X</button>
+</body>
+<script>
+    var text  = document.getElementById("text");
+    var serch = document.getElementById("serch");
+    var input = document.getElementById("input");
+    var save = document.getElementsByClassName("save")[0];
+    var child = save.childNodes;
+    serch.onclick = function(){
+        var value1 = text.value;
+        var time = new Date().getTime();
+        for(var i = 0;i<localStorage.length;i++){
+            if(localStorage.getItem(localStorage.key(i)) == value1){
+                localStorage.remove(key(i));
+            }
+        }
+        localStorage.setItem(time,value1);
+        var another = document.createElement("button");
+        another.innerHTML =value1;
+        another.setAttribute("style","margin-left: 10px;margin-top: 10px;border: 1px solid grey;font-size:15px;");
+        save.appendChild(another);
+        document.getElementById("text").value="";
+        text.getAttribute("placeholder","请输入想查找的商品");
+    }
+    input.onclick = function(){
+        if(window.confirm("是要全部清除吗？")){
+            localStorage.clear();
+            for(var i = child.length -1 ;i >= 0;i--){
+                save.removeChild(child[i]);
+            }
+        }
+    }
+    for(var i=0;i<localStorage.length;i++){
+        var value0 = localStorage.key(i);
+        var key = localStorage.getItem(value0);
+        var button = document.createElement("button");
+        button.innerHTML = key;
+        button.setAttribute("style","margin-left: 10px;margin-top: 10px;border: 1px solid grey;font-size:15px;")
+        save.appendChild(button);
+    }
+</script>
+</html>
