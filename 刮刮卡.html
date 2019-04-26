@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div width='200' height='110'>
+    <canvas id="canvas1" width="200px" height="100px"></canvas>
+    <canvas id="canvas2" width="200px" height="100px"></canvas>
+    </div>
+</body>
+<script>
+    window.onload = function(){
+        var c0=document.getElementById('canvas1');
+        var con=c0.getContext('2d');
+        var c=document.getElementById('canvas2');
+        var context=c.getContext('2d');
+
+        con.beginPath();
+        con.textAlign='center';
+        con.font='40px consolas';
+        con.fillStyle="red";
+        con.fillText('一等奖',c.width/2,c.height/2);
+        con.closePath();
+        con.fill();
+
+        context.beginPath();
+        context.fillStyle="gray";
+        c.style.position = 'absolute'; 
+        c.style.left='10px';
+        context.fillRect(0,0,c.width,c.height);
+        var down=false;
+        c.onmousedown=function(){
+            down=true;
+        }
+        c.onmouseup=function(){
+            down=false;
+            c.globalCompositeOperation="source-out";
+        }
+        c.onmousemove=function(e){
+            if(down){
+                
+                context.globalCompositeOperation = 'destination-out';
+                context.beginPath();
+                var x=e.pageX-c.offsetLeft;
+                var y=e.pageY-c.offsetTop;
+                context.arc(x,y,20,0,2*Math.PI);
+                context.closePath();
+                context.fill();
+            }
+        }
+        document.onmousemove=function () {
+            var imageDate = context.getImageData(0, 0, c.width, c.height);
+            var px = imageDate.width * imageDate.height;
+            var i = 0;
+            for (var j = 0; j < px; j++) {
+                if (imageDate.data[j * 4 + 3] == 0) {
+                    i++;
+                }
+            }
+            if (i >= px * 0.85) {
+                context.clearRect(0,0,200,100);
+            }
+        }
+    }
+</script>
+</html>
