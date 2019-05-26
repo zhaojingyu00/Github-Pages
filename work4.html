@@ -6,31 +6,102 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        ul,li,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        
         .header{
             width: 500px;
-            height: 500px;
+            height: 330px;
             background-color:red;
             margin:0 auto;
-            background: url(imgs/zhanqiao.jpg) no-repeat;
+            background: url(./imgs/zhanqiao.jpg) no-repeat;
             background-size: contain;
         }
         .inner0{
-            position:absolute;
-            left: 200px;
-            top:12px;
+            position: relative;
+            left: 400px;
+            top:30px;
             background-color: orange;
+            width:50px;
+            height: 50px;
             border-radius: 50%;
         }
         .inner0 li{
             color:white;
+            text-align: center;
+        }
+        .inner1{
+            width: 80px;
+            height: 40px;
+            position:relative;
+            left: 0;
+            top:240px;
+            background-color: orange;
+        }
+        .inner1 li{
+            color:white;
+            text-align: center;
+            padding-top:8px;
+        }
+        .header1{
+            width: 500px;
+            height: 250px;
+            margin: 0 auto;
+        }
+        .inner2{
+            color:black;
+            font-size:28px;
+            padding-left: 25px;
+            padding-top:30px;
+        }
+        .inner3{
+            color:orange;
+            font-size:23px;
+            padding-left:25px;
+            padding-top:20px;
+        }
+        .header2{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .word4{
+            padding-left: 25px;
+            color: gray;
+            float: left;
+        }
+        .word5{
+            padding-left: 18px;
+            color:gray;
+            float: left;
         }
     </style>
 </head>
 <body>
-    <div id="header" class="header">
-        <div class="inner0">
-            <li>15</li>
-            <li>五月</li>
+     <div>
+        <div id="header" class="header">
+            <div class="inner0">
+                <li>15</li>
+                <li>五月</li>
+            </div>
+            <div class="inner1">
+                <li>照片</li>
+            </div>
+        </div>
+        <div id="header1" class="header1">
+            <li class="inner2">青岛栈桥</li>
+            <li class="inner3">国家AAAA级旅游景区</li>
+        </div>
+        <div class="header2">
+            <li class="word4">十分钟前</li>
+            <li class="word5">123评论</li>
         </div>
     </div>
 </body>
